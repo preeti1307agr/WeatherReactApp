@@ -20,6 +20,7 @@ const WeatherIcons = {
   };
 
 const Weather = (props) => {
+    console.log("In weather component");
     const {weather, city} = props;
     const currentDate = new Date();
     const day = String(currentDate.getDate()).padStart(2, '0');
