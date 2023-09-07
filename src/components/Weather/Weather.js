@@ -10,7 +10,7 @@ const WeatherIcons = {
     "03d": "/icons/cloudy.svg",
     "03n": "/icons/cloudy.svg",
     "04d": "/icons/perfect-day.svg",
-    "04n": "/public/icons/cloudy-night.svg",
+    "04n": "/icons/cloudy-night.svg",
     "09d": "/icons/rain.svg",
     "09n": "/icons/rain-night.svg",
     "10d": "/icons/rain.svg",

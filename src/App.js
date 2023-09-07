@@ -10,7 +10,7 @@ function App() {
   const fetchWeather = async (e) => {
     e.preventDefault();
     const response = await Axios.get(
-      `http://localhost:8000/forecast/${city}`, {
+      `http://localhost:7000/forecast/${city}`, {
         headers: {  
           'Content-Type': 'application/json',
           "Access-Control-Allow-Origin": "*"
