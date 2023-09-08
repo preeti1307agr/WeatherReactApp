@@ -1,26 +1,9 @@
 import React from "react";
-import {WeatherContainer, Condition, WeatherIcon, Location, WeatherInfoLabel, WeatherInfoContainer} from "../Weather/Weather.style";
+import { WeatherContainer, Condition, WeatherIcon, Location, WeatherInfoLabel, WeatherInfoContainer } from "../Weather/Weather.style";
 import WeatherInfo from "./WeatherInfo";
-
-const WeatherIcons = {
-    "01d": "/icons/sunny.svg",
-    "01n": "/icons/night.svg",
-    "02d": "/icons/day.svg",
-    "02n": "/icons/cloudy-night.svg",
-    "03d": "/icons/cloudy.svg",
-    "03n": "/icons/cloudy.svg",
-    "04d": "/icons/perfect-day.svg",
-    "04n": "/icons/cloudy-night.svg",
-    "09d": "/icons/rain.svg",
-    "09n": "/icons/rain-night.svg",
-    "10d": "/icons/rain.svg",
-    "10n": "/icons/rain-night.svg",
-    "11d": "/icons/storm.svg",
-    "11n": "/icons/storm.svg",
-  };
+import { WEATHER_ICONS } from "../../utils/constants"
 
 const Weather = (props) => {
-    console.log("In weather component");
     const {weather, city} = props;
     const currentDate = new Date();
     const day = String(currentDate.getDate()).padStart(2, '0');
@@ -43,7 +26,6 @@ const Weather = (props) => {
             arr.push(we);
         }
     })
-    console.log("arr", arr);
     const arr1 = [];
     const timeToweatherCondition = new Map();
     const timeToweatherDescription = new Map();
@@ -81,7 +63,7 @@ const Weather = (props) => {
                     <span>{`${temperature}°C`}</span>
                     {`  |  ${description}`}
                 </Condition>
-                <WeatherIcon src={WeatherIcons[weatherIcon]}/>
+                <WeatherIcon src={WEATHER_ICONS[weatherIcon]}/>
             </WeatherContainer>
 
             <WeatherInfoLabel>Weather Info</WeatherInfoLabel>

@@ -18,7 +18,7 @@ const Temperatures = (props) => {
             </thead>
             <tbody>
               {temperature.map(temp => (
-                <tr key={temp.forecastWeather.time}>
+                <tr key={Date.now()}>
                   <td>{temp.weatherDate}</td>
                   <td>{temp.forecastWeather.time}</td>
                   <td>{temp.forecastWeather.temperature.temp}</td>

@@ -1,4 +1,4 @@
-export const WeatherIcons = {
+export const WEATHER_ICONS = {
     "01d": "/icons/sunny.svg",
     "01n": "/icons/night.svg",
     "02d": "/icons/day.svg",
@@ -6,7 +6,7 @@ export const WeatherIcons = {
     "03d": "/icons/cloudy.svg",
     "03n": "/icons/cloudy.svg",
     "04d": "/icons/perfect-day.svg",
-    "04n": "/public/icons/cloudy-night.svg",
+    "04n": "/icons/cloudy-night.svg",
     "09d": "/icons/rain.svg",
     "09n": "/icons/rain-night.svg",
     "10d": "/icons/rain.svg",
@@ -14,3 +14,5 @@ export const WeatherIcons = {
     "11d": "/icons/storm.svg",
     "11n": "/icons/storm.svg",
 };
+
+export const WEATHER_SERVICE_URL = "http://localhost:7000/forecast/";
