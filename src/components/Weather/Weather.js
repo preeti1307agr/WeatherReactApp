@@ -3,6 +3,14 @@ import { WeatherContainer, Condition, WeatherIcon, Location, WeatherInfoLabel, W
 import WeatherInfo from "./WeatherInfo";
 import { WEATHER_ICONS } from "../../utils/constants"
 
+/**
+ * Weather Component: This component displays the weather condition for your city.
+ *
+ * @param {Object} props - Component properties.
+ * @param {function} props.city - Function to update the selected city.
+ * @param {function} props.weather - Function to fetch weather data.
+ */
+
 const Weather = (props) => {
     const {weather, city} = props;
     const currentDate = new Date();
@@ -10,8 +18,12 @@ const Weather = (props) => {
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
     const year = currentDate.getFullYear();
 
+    //the format in which the date is received 
     const formattedDate = `${year}-${month}-${day}`;
+
+    // get the current hour
     let hour = currentDate.getHours();
+
     let weatherCond= "";
     let temperature = "";
     let description = "";
@@ -19,22 +31,22 @@ const Weather = (props) => {
     let speed = "";
     let pressure = "";
 
-    const temp = () => { 
-        const arr = [];
+    const getWeatherData = () => { 
+        const weatherArray = [];
         weather.map(we =>{
         if(we.weatherDate === formattedDate){
-            arr.push(we);
+            weatherArray.push(we);
         }
     })
-    const arr1 = [];
+    const weatherObjects = [];
     const timeToweatherCondition = new Map();
     const timeToweatherDescription = new Map();
     const timeToweatherIcon = new Map();
     const timeToTemp = new Map();
     const timeToWind = new Map();
     const timeToPressure = new Map();
-    arr.map(weather => {
-       arr1.push(weather.forecastWeather.time);
+    weatherArray.map(weather => {
+       weatherObjects.push(weather.forecastWeather.time);
        timeToweatherCondition.set(weather.forecastWeather.time, weather.forecastWeather.weather.weatherCondition);
        timeToweatherDescription.set(weather.forecastWeather.time, weather.forecastWeather.weather.description);
        timeToweatherIcon.set(weather.forecastWeather.time, weather.forecastWeather.weather.weatherIcon);
@@ -43,20 +55,21 @@ const Weather = (props) => {
        timeToWind.set(weather.forecastWeather.time, weather.forecastWeather.wind.speed);
     })
 
-    var closest = arr1.reduce(function(prev, curr) {
+    //calculate the closest hour/ weather object to display the conditions when the user searched
+    var closestTime = weatherObjects.reduce(function(prev, curr) {
     return (Math.abs(curr - hour) < Math.abs(prev - hour) ? curr : prev);
     });
 
-    weatherCond = timeToweatherCondition.get(closest);
-    temperature = timeToTemp.get(closest);
-    speed = timeToWind.get(closest);
-    pressure = timeToPressure.get(closest);
-    description = timeToweatherDescription.get(closest);
-    weatherIcon = timeToweatherIcon.get(closest);
+    weatherCond = timeToweatherCondition.get(closestTime);
+    temperature = timeToTemp.get(closestTime);
+    speed = timeToWind.get(closestTime);
+    pressure = timeToPressure.get(closestTime);
+    description = timeToweatherDescription.get(closestTime);
+    weatherIcon = timeToweatherIcon.get(closestTime);
 }
     return (
         <>
-        {temp()}
+        {getWeatherData()}
             <Location>{`${city.toUpperCase()}`}</Location>
             <WeatherContainer>
                 <Condition>

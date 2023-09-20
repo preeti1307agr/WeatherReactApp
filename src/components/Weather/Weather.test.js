@@ -6,7 +6,7 @@ import Weather from "./Weather";
 const mockWeatherData = [
   {
     forecastWeather: {
-      time: 12,
+      time: 18,
       weather: {
         weatherCondition: "Clear",
         description: "Clear sky",
@@ -20,7 +20,7 @@ const mockWeatherData = [
         speed: 5,
       },
     },
-    weatherDate: "2023-09-07"
+    weatherDate: "2023-09-21"
   }
 ];
 

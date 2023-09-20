@@ -1,6 +1,13 @@
 import React from "react";
 import "../Temperatures/Temperatures.css";
 
+/**
+ * Temperatures Component: This component allows users to see the list of temperatures for your city.
+ *
+ * @param {Object} props - Component properties.
+ * @param {function} props.temperature - Function to fetch the temperature of the selected city.
+ */
+
 const Temperatures = (props) => {
 
     const {temperature} = props;
